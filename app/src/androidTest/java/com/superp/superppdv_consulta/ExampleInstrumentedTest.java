@@ -1,4 +1,4 @@
-package com.example.superppdv_consulta;
+package com.superp.superppdv_consulta;
 
 import android.content.Context;
 

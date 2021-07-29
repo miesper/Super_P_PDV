@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.superppdv_consulta">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.superp.superppdv_consulta">
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
@@ -10,11 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.SuperPPDVConsulta">
+        android:theme="@style/Theme.SuperPPDVConsulta"
+        tools:targetApi="m">
         <activity
-            android:name=".FullscreenActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"></activity>
-        <activity android:name=".MainActivity"
+            android:name="com.superp.superppdv_consulta.FullscreenActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity android:name="com.superp.superppdv_consulta.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

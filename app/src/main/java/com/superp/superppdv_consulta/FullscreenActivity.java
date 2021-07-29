@@ -1,4 +1,4 @@
-package com.example.superppdv_consulta;
+package com.superp.superppdv_consulta;
 
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
@@ -13,6 +13,8 @@ import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Objects;
+
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -26,11 +28,11 @@ public class FullscreenActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE); //will hide the title
-        getSupportActionBar().hide(); // hide the title bar
+        Objects.requireNonNull(getSupportActionBar()).hide(); // hide the title bar
         setContentView(R.layout.activity_fullscreen);
 
-        WebView webview = (WebView) findViewById(R.id.webview);
-        ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBarEmpresa);
+        WebView webview = findViewById(R.id.webview);
+        ProgressBar progressBar = findViewById(R.id.progressBarEmpresa);
 
 
         SharedPreferences sharedPreferences = getSharedPreferences("Productive", MODE_PRIVATE);

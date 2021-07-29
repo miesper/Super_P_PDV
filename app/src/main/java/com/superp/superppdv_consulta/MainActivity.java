@@ -1,14 +1,15 @@
-package com.example.superppdv_consulta;
+package com.superp.superppdv_consulta;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.InputFilter;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,13 +18,13 @@ public class MainActivity extends AppCompatActivity {
     {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE); //will hide the title
-        getSupportActionBar().hide(); // hide the title bar
+        Objects.requireNonNull(getSupportActionBar()).hide(); // hide the title bar
         setContentView(R.layout.activity_main);
 
-        EditText etPorta = (EditText) findViewById(R.id.porta);
-        EditText etIp = (EditText) findViewById(R.id.ip);
+        EditText etPorta = findViewById(R.id.porta);
+        EditText etIp = findViewById(R.id.ip);
 
-        Button btnEntrar = (Button) findViewById(R.id.login);
+        Button btnEntrar = findViewById(R.id.login);
         SharedPreferences sharedPreferences = getSharedPreferences("Productive", MODE_PRIVATE);
 
 
