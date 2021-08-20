@@ -39,7 +39,7 @@ public class FullscreenActivity extends AppCompatActivity
 
         String ip = sharedPreferences.getString("ip", "");
         String porta = sharedPreferences.getString("porta","");
-        String caminho = ip + ":" + porta + "/m";
+        String caminho = "http://" +         ip + ":" + porta + "/m";
         Log.e("caminho", caminho);
 
         WebSettings webSettings = webview.getSettings();
