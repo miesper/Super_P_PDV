@@ -1,6 +1,8 @@
 package com.superp.superppdv_consulta;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,6 +24,7 @@ import java.util.Objects;
  */
 public class FullscreenActivity extends AppCompatActivity
 {
+    NetworkChangeReceiver networkChangeReceiver = new NetworkChangeReceiver();
     @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -30,6 +33,9 @@ public class FullscreenActivity extends AppCompatActivity
         requestWindowFeature(Window.FEATURE_NO_TITLE); //will hide the title
         Objects.requireNonNull(getSupportActionBar()).hide(); // hide the title bar
         setContentView(R.layout.activity_fullscreen);
+
+        IntentFilter intentFilter = new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE");
+        getApplicationContext().registerReceiver(networkChangeReceiver, intentFilter);
 
         WebView webview = findViewById(R.id.webview);
         ProgressBar progressBar = findViewById(R.id.progressBarEmpresa);
@@ -57,6 +63,23 @@ public class FullscreenActivity extends AppCompatActivity
                                      }
                                  }
         );
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent)
+    {
+        super.onNewIntent(intent);
+        if(intent.getBooleanExtra("close_activity",false))
+        {
+            this.finish();
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        getApplicationContext().unregisterReceiver(networkChangeReceiver);
     }
 
 }
